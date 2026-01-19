@@ -1,6 +1,22 @@
 [
-    {"usuario": "Ruben", "estado": "Trujillo", "puntos": 100},
-    {"usuario": "Maria", "estado": "Zulia", "puntos": 85},
-    {"usuario": "Carlos", "estado": "Lara", "puntos": 50},
-    {"usuario": "Ana", "estado": "Bolivar", "puntos": 92}
+    {
+        "usuario": "Ruben",
+        "puntos": 100,
+        "estado": "Trujillo"
+    },
+    {
+        "usuario": "Enyuri",
+        "puntos": 40,
+        "estado": "La Guaira"
+    },
+    {
+        "usuario": "Maria",
+        "puntos": 60,
+        "estado": "Miranda"
+    },
+    {
+        "usuario": "Trinidad",
+        "puntos": 70,
+        "estado": "Falc\u00f3n"
+    }
 ]
