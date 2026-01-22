@@ -1,11 +1,15 @@
+import os
+
 import json  
-with open(r'datos.json') as archivo:    infoapp_data = json.load(archivo) 
+with open(r'datos.json') as archivo:    usuarios_data = json.load(archivo) 
 
-print(f"Se han cargado {len(infoapp_data)} registros desde la base de datos.")
-
-for registro in infoapp_data:
+for registro in usuarios_data:
     if registro["puntos"] >= 90:
         print(f"{registro['usuario']} tiene un desempeño excelente.")
+
+for  registro in usuarios_data:
+    if registro["puntos"] <= 50:
+        print(f"{registro['usuario']} debe mejorar su desempeño")
 
 def buscar_usuario(nombre_buscado, lista_datos):
     for registro in lista_datos:
@@ -13,10 +17,21 @@ def buscar_usuario(nombre_buscado, lista_datos):
             return registro
     return None
 
+
 def registrar_usuario(lista_datos):
-    print("\n---Registro de nuevo usuario ---")
+    print("\n--- Registro de nuevo usuario ---")
     nombre = input("Nombre del nuevo usuario: ")
-    puntos = int(input("Puntos iniciales: "))
+
+    while True:
+    
+     try: 
+        puntos = int(input("Puntos iniciales: "))
+        break
+    
+     except Exception as e:
+        print("Valor incorrecto")
+        puntos = 0
+
     estado = input("Estado: ")
     
     nuevo = {"usuario": nombre, "puntos": puntos, "estado": estado}
@@ -51,17 +66,27 @@ try:
         datos = json.load(archivo)
 
     while True:
+      
+      total_usuarios = len(datos)
+      if total_usuarios == 0:
+        print("No hay usuarios registrados")
+      elif total_usuarios == 1:
+        print(f"{total_usuarios} usuario registrado")
+      else:
+        print(f"{total_usuarios} usuarios registrados")
+
       print("\n--- MENÚ DE LA APP ---")
       print("1. Buscar | 2. Registrar | 3. Eliminar | 4. Salir")
       opcion = input("Selecciona: ")
+      os.system('cls')
 
       if opcion == "1":
         nombre = input("¿A quién buscas?: ")
         resultado = buscar_usuario(nombre, datos)
         if resultado:
-            print(f"✅ Encontrado: {resultado['usuario']} tiene {resultado['puntos']} puntos.")
+            print(f"Encontrado: {resultado['usuario']} tiene {resultado['puntos']} puntos.")
         else:
-            print("❌ Usuario no registrado.")
+            print("Usuario no registrado.")
 
       elif opcion == "2":
        
